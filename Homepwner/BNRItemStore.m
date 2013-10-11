@@ -48,4 +48,20 @@
     [allItems addObject:item];
     return item;
 }
+
+- (void)removeItem:(BNRItem *)item
+{
+    [allItems removeObjectIdenticalTo:item];
+}
+
+- (void)moveItem:(NSInteger)from toItem:(NSInteger)to
+{
+    if (from == to) {
+        return;
+    }
+    BNRItem *item = [allItems objectAtIndex:from];
+    [allItems removeObjectAtIndex:from];
+    [allItems insertObject:item atIndex:to];
+}
+
 @end

@@ -56,6 +56,7 @@
     return headerView;
 }
 
+#pragma mark - UITableViewDelegate
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     return [self headerView];
@@ -65,6 +66,8 @@
 {
     return [[self headerView] bounds].size.height;
 }
+
+#pragma mark - UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
@@ -81,6 +84,23 @@
     BNRItem *item = [[[BNRItemStore sharedStore] allItems] objectAtIndex:indexPath.row];
     [cell.textLabel setText:[item description]];
     return cell;
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        BNRItemStore *itemStore = [BNRItemStore sharedStore];
+        NSArray *items = [itemStore allItems];
+        BNRItem *item = [items objectAtIndex:[indexPath row]];
+        [itemStore removeItem:item];
+        
+        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    }
+}
+
+- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath
+{
+    [[BNRItemStore sharedStore] moveItem:[sourceIndexPath row] toItem:[destinationIndexPath row]];
 }
 
 @end
