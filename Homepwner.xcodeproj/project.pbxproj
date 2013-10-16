@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		017552BA1802E06E00972ED8 /* HeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 017552B91802E06E00972ED8 /* HeaderView.xib */; };
 		018435A217FD57EF0018321B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A117FD57EF0018321B /* UIKit.framework */; };
 		018435A417FD57EF0018321B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A317FD57EF0018321B /* Foundation.framework */; };
 		018435A617FD57EF0018321B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A517FD57EF0018321B /* CoreGraphics.framework */; };
@@ -20,10 +19,11 @@
 		018435C017FD5C600018321B /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 018435BF17FD5C600018321B /* ItemsViewController.m */; };
 		018435C317FD62AB0018321B /* BNRItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 018435C117FD62AB0018321B /* BNRItem.m */; };
 		018435C617FDABA90018321B /* BNRItemStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 018435C517FDABA90018321B /* BNRItemStore.m */; };
+		01EA5A44180C1BC9008E2CE1 /* DetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 01EA5A42180C1BC9008E2CE1 /* DetailViewController.m */; };
+		01EA5A45180C1BC9008E2CE1 /* DetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 01EA5A43180C1BC9008E2CE1 /* DetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		017552B91802E06E00972ED8 /* HeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HeaderView.xib; sourceTree = "<group>"; };
 		0184359E17FD57EF0018321B /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018435A117FD57EF0018321B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		018435A317FD57EF0018321B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -43,6 +43,9 @@
 		018435C217FD62AB0018321B /* BNRItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItem.h; sourceTree = "<group>"; };
 		018435C417FDABA90018321B /* BNRItemStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRItemStore.h; sourceTree = "<group>"; };
 		018435C517FDABA90018321B /* BNRItemStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRItemStore.m; sourceTree = "<group>"; };
+		01EA5A41180C1BC9008E2CE1 /* DetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailViewController.h; sourceTree = "<group>"; };
+		01EA5A42180C1BC9008E2CE1 /* DetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailViewController.m; sourceTree = "<group>"; };
+		01EA5A43180C1BC9008E2CE1 /* DetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +96,9 @@
 				018435B117FD57EF0018321B /* HomepwnerAppDelegate.m */,
 				018435BE17FD5C600018321B /* ItemsViewController.h */,
 				018435BF17FD5C600018321B /* ItemsViewController.m */,
-				017552B91802E06E00972ED8 /* HeaderView.xib */,
+				01EA5A41180C1BC9008E2CE1 /* DetailViewController.h */,
+				01EA5A42180C1BC9008E2CE1 /* DetailViewController.m */,
+				01EA5A43180C1BC9008E2CE1 /* DetailViewController.xib */,
 				018435C417FDABA90018321B /* BNRItemStore.h */,
 				018435C517FDABA90018321B /* BNRItemStore.m */,
 				018435C217FD62AB0018321B /* BNRItem.h */,
@@ -173,7 +178,7 @@
 				018435B417FD57EF0018321B /* Default.png in Resources */,
 				018435B617FD57EF0018321B /* Default@2x.png in Resources */,
 				018435B817FD57EF0018321B /* Default-568h@2x.png in Resources */,
-				017552BA1802E06E00972ED8 /* HeaderView.xib in Resources */,
+				01EA5A45180C1BC9008E2CE1 /* DetailViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -189,6 +194,7 @@
 				018435C017FD5C600018321B /* ItemsViewController.m in Sources */,
 				018435C317FD62AB0018321B /* BNRItem.m in Sources */,
 				018435C617FDABA90018321B /* BNRItemStore.m in Sources */,
+				01EA5A44180C1BC9008E2CE1 /* DetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
