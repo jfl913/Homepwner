@@ -16,7 +16,13 @@
 {
     self = [super initWithStyle:UITableViewStyleGrouped];
     if (self) {
+        UINavigationItem *navItem = [self navigationItem];
+        [navItem setTitle:@"Homepwner"];
         
+        UIBarButtonItem *barButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addNewItem:)];
+        [[self navigationItem] setRightBarButtonItem:barButtonItem];
+        
+        [[self navigationItem] setLeftBarButtonItem:[self editButtonItem]];
     }
     
     return self;
@@ -25,6 +31,12 @@
 - (id)initWithStyle:(UITableViewStyle)style
 {
     return [self init];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.tableView reloadData];
 }
 
 - (IBAction)addNewItem:(id)sender
@@ -47,24 +59,34 @@
     }
 }
 
-- (UIView *)headerView
-{
-    if (!headerView) {
-        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
-    }
-    
-    return headerView;
-}
+//- (UIView *)headerView
+//{
+//    if (!headerView) {
+//        [[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil];
+//    }
+//    
+//    return headerView;
+//}
 
 #pragma mark - UITableViewDelegate
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    return [self headerView];
-}
+//- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
+//{
+//    return [self headerView];
+//}
+//
+//- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+//{
+//    return [[self headerView] bounds].size.height;
+//}
 
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [[self headerView] bounds].size.height;
+    NSArray *items = [[BNRItemStore sharedStore] allItems];
+    BNRItem *item = [items objectAtIndex:[indexPath row]];
+    
+    DetailViewController *detailViewController = [[DetailViewController alloc] init];
+    [detailViewController setItem:item];
+    [[self navigationController] pushViewController:detailViewController animated:YES];
 }
 
 #pragma mark - UITableViewDataSource
