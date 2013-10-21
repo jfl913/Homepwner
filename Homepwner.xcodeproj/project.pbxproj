@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		015AE93518156169004977D7 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015AE93418156169004977D7 /* Reveal.framework */; };
+		015AE9371815617B004977D7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015AE9361815617B004977D7 /* CFNetwork.framework */; };
+		015AE93918156183004977D7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 015AE93818156183004977D7 /* QuartzCore.framework */; };
+		015AE93C1815666E004977D7 /* BNRImageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 015AE93B1815666E004977D7 /* BNRImageStore.m */; };
 		018435A217FD57EF0018321B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A117FD57EF0018321B /* UIKit.framework */; };
 		018435A417FD57EF0018321B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A317FD57EF0018321B /* Foundation.framework */; };
 		018435A617FD57EF0018321B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 018435A517FD57EF0018321B /* CoreGraphics.framework */; };
@@ -24,6 +28,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		015AE93418156169004977D7 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Reveal.framework; sourceTree = "<group>"; };
+		015AE9361815617B004977D7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		015AE93818156183004977D7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		015AE93A1815666E004977D7 /* BNRImageStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BNRImageStore.h; sourceTree = "<group>"; };
+		015AE93B1815666E004977D7 /* BNRImageStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BNRImageStore.m; sourceTree = "<group>"; };
 		0184359E17FD57EF0018321B /* Homepwner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Homepwner.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		018435A117FD57EF0018321B /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		018435A317FD57EF0018321B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -53,9 +62,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				015AE93918156183004977D7 /* QuartzCore.framework in Frameworks */,
+				015AE9371815617B004977D7 /* CFNetwork.framework in Frameworks */,
 				018435A217FD57EF0018321B /* UIKit.framework in Frameworks */,
 				018435A417FD57EF0018321B /* Foundation.framework in Frameworks */,
 				018435A617FD57EF0018321B /* CoreGraphics.framework in Frameworks */,
+				015AE93518156169004977D7 /* Reveal.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -82,6 +94,9 @@
 		018435A017FD57EF0018321B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				015AE9361815617B004977D7 /* CFNetwork.framework */,
+				015AE93818156183004977D7 /* QuartzCore.framework */,
+				015AE93418156169004977D7 /* Reveal.framework */,
 				018435A117FD57EF0018321B /* UIKit.framework */,
 				018435A317FD57EF0018321B /* Foundation.framework */,
 				018435A517FD57EF0018321B /* CoreGraphics.framework */,
@@ -103,6 +118,8 @@
 				018435C517FDABA90018321B /* BNRItemStore.m */,
 				018435C217FD62AB0018321B /* BNRItem.h */,
 				018435C117FD62AB0018321B /* BNRItem.m */,
+				015AE93A1815666E004977D7 /* BNRImageStore.h */,
+				015AE93B1815666E004977D7 /* BNRImageStore.m */,
 				018435A817FD57EF0018321B /* Supporting Files */,
 			);
 			path = Homepwner;
@@ -195,6 +212,7 @@
 				018435C317FD62AB0018321B /* BNRItem.m in Sources */,
 				018435C617FDABA90018321B /* BNRItemStore.m in Sources */,
 				01EA5A44180C1BC9008E2CE1 /* DetailViewController.m in Sources */,
+				015AE93C1815666E004977D7 /* BNRImageStore.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,9 +289,14 @@
 		018435BC17FD57EF0018321B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Homepwner/Homepwner-Prefix.pch";
 				INFOPLIST_FILE = "Homepwner/Homepwner-Info.plist";
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -282,6 +305,10 @@
 		018435BD17FD57EF0018321B /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Homepwner/Homepwner-Prefix.pch";
 				INFOPLIST_FILE = "Homepwner/Homepwner-Info.plist";

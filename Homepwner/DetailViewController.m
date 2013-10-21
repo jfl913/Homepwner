@@ -51,4 +51,24 @@
     [[self navigationItem] setTitle:[_item itemName]];
 }
 
+- (IBAction)takePicture:(id)sender {
+    UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
+    if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypeCamera];
+    }else{
+        [imagePickerController setSourceType:UIImagePickerControllerSourceTypePhotoLibrary];
+    }
+    
+    [imagePickerController setDelegate:self];
+    [self presentViewController:imagePickerController animated:YES completion:nil];
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
+    [imageView setImage:image];
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 @end
