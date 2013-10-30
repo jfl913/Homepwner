@@ -8,6 +8,7 @@
 
 #import "DetailViewController.h"
 #import "BNRItem.h"
+#import "BNRImageStore.h"
 
 @interface DetailViewController ()
 
@@ -35,6 +36,16 @@
     [dateFormatter setDateStyle:NSDateFormatterMediumStyle];
     [dateFormatter setTimeStyle:NSDateFormatterNoStyle];
     [dateLabel setText:[dateFormatter stringFromDate:[_item dateCreated]]];
+    
+    NSString *imageKey = [_item imageKey];
+    if (imageKey) {
+        BNRImageStore *imageStore = [BNRImageStore sharedStore];
+        [imageView setImage:[imageStore imageForKey:imageKey]];
+    }else{
+        [imageView setImage:nil];
+    }
+    
+    
 }
 
 - (void)viewWillDisappear:(BOOL)animated
@@ -63,12 +74,37 @@
     [self presentViewController:imagePickerController animated:YES completion:nil];
 }
 
+- (IBAction)backgroundTapped:(id)sender {
+    [[self view] endEditing:YES];
+}
+
 #pragma mark - UIImagePickerControllerDelegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
-    [imageView setImage:image];
+    CFUUIDRef newUUID = CFUUIDCreate(kCFAllocatorDefault);
+    CFStringRef newUUIDStr = CFUUIDCreateString(kCFAllocatorDefault, newUUID);
+    NSString *key = (__bridge NSString *)newUUIDStr;
+    
+    BNRImageStore *imageStore = [BNRImageStore sharedStore];
+    if ([_item imageKey]) {
+        [imageStore deleteImageForKey:[_item imageKey]];
+    }
+    
+    [_item setImageKey:key];
+    [imageStore setImage:image forKey:key];
+    CFRelease(newUUID);
+    CFRelease(newUUIDStr);
+    [imageView setImage:[imageStore imageForKey:[_item imageKey]]];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma mark - UITextFieldDelegate
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    [textField resignFirstResponder];
+    return YES;
+}
+
 @end
